@@ -19,7 +19,7 @@ export class AdvancedSearchPage {
 
             mr: new FormControl(),
             name: new FormControl(),
-            provider: new FormControl(),
+            prov: new FormControl(),
             order: new FormControl(),
             order_by: new FormControl(),
             limit_to: new FormControl(),

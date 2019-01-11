@@ -60,7 +60,7 @@ export class HomePage {
         });
     }
 
-  
+
 
 
     ionViewDidLoad() {
@@ -87,11 +87,25 @@ export class HomePage {
 
             return this.http.get('./assets/data/patients.json', {})
                 .map(res => res.json() as PatientsModel)
-                .filter(item=>{
-                    
-                }).subscribe(resp => {
+                .subscribe(resp => {
                     this.dataPatients = resp as PatientsModel;
-                    this.rows = this.dataPatients.patientsList;
+                    console.log(JSON.stringify(this.dataPatientsPostModel));
+                    if (this.dataPatientsPostModel != null) {
+                        this.rows = this.dataPatients.patientsList.filter(
+                            data => {
+                                if (this.dataPatientsPostModel.name == null) this.dataPatientsPostModel.name = "";
+                                if (this.dataPatientsPostModel.mr == null) this.dataPatientsPostModel.mr = "";
+                                if (this.dataPatientsPostModel.prov == null) this.dataPatientsPostModel.prov = "";
+
+                                return data.name.toUpperCase().includes(this.dataPatientsPostModel.name.toUpperCase())
+                                    && data.mr.toUpperCase().includes(this.dataPatientsPostModel.mr.toUpperCase())
+                                    && data.prov.toUpperCase().includes(this.dataPatientsPostModel.prov.toUpperCase());
+                            }
+                        );
+                    }
+                    else {
+                        this.rows = this.dataPatients.patientsList;
+                    }
                     resolve(true);
                 },
                 err => {
