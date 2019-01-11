@@ -1,0 +1,45 @@
+
+<ion-content >
+    <form class="form" [formGroup]="search_form"  (ngSubmit)="onSubmit(search_form.value)">
+        <section class="form-section">
+            <ion-item>
+                <ion-label floating>MR #:</ion-label>
+                <ion-input type="text" formControlName="mr"></ion-input>
+            </ion-item>
+
+
+            <ion-item>
+                <ion-label floating>NAME:</ion-label>
+                <ion-input type="text" formControlName="name"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>PROVIDER</ion-label>
+                <ion-input type="text" formControlName="provider"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>ORDER:</ion-label>
+                <ion-input type="text" formControlName="order"></ion-input>
+
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>ORDER BY:</ion-label>
+                <ion-input type="text" formControlName="order_by"></ion-input>
+
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>LIMIT TO:</ion-label>
+                <ion-input type="text" formControlName="limit_to"></ion-input>
+            </ion-item>
+
+
+        </section>
+
+
+
+        <button ion-button full type="submit" >Search</button>
+    </form>
+</ion-content>
